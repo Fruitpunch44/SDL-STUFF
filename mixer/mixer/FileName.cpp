@@ -54,13 +54,10 @@ int main(int argc, char* argv[]) {
 					if (!Mix_PlayingMusic()) {
 						if (Current == nullptr || Current == Track2) {
 							Current = Track1;
-							Mix_PlayMusic(Current, 0);
+							Mix_PlayMusic(Current, 0);//start from track 1 always 
 						}
-						else if (Current == Track1) {
-							Current = Track2;
-							Mix_PlayMusic(Current, 0);
-						}
-					}
+					
+					
 					else if (Mix_PausedMusic())
 						Mix_ResumeMusic();
 					break;
@@ -73,8 +70,10 @@ int main(int argc, char* argv[]) {
 					Mix_HaltMusic();
 					if (Current == Track1)
 						Current = Track2;
+						Mix_PlayMusic(Current, 0);
 					else if (Current == Track2)
 						Current = Track1;
+						Mix_PlayMusic(Current, 0);
 					break;
 				}
 			}
